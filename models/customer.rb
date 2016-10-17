@@ -17,11 +17,20 @@ class Customer
     @id = customer['id'].to_i
   end
 
+  def delete()
+    sql = "DELETE FROM customers WHERE id = #{ @id }"
+    SqlRunner.run( sql ).first
+  end
+
   def films()
     sql = "SELECT films.* FROM films INNER JOIN tickets ON tickets.film_id = films.id WHERE tickets.customer_id = #{@id};"
     films = SqlRunner.run(sql)
     result = films.map { |film| Film.new(film) }
     return result
+  end
+
+  def number_of_tickets()
+    return films.count
   end
 
   # def update()

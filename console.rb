@@ -41,10 +41,6 @@ ticket6.save
 ticket7 = Ticket.new({ 'customer_id' => customer3.id , 'film_id' => film5.id })
 ticket7.save
 
-customer1.name = "Arnie"
-# customer1.update
-# puts customer1.inspect
-
 
 binding.pry
 nil

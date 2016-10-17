@@ -16,6 +16,11 @@ require_relative("../db/sql_runner")
       @id = ticket['id'].to_i
     end
 
+    def delete()
+      sql = "DELETE FROM tickets WHERE id = #{ @id }"
+      SqlRunner.run( sql ).first
+    end
+
     def customer()
       sql = "SELECT * FROM cutomers WHERE id = #{@customer_id}"
       tickets = SqlRunner.run(sql)
